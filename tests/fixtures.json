@@ -1,0 +1,4409 @@
+[
+  {
+    "file": "Nested and mixed array encoding – arrays of arrays, mixed type arrays, root arrays",
+    "name": "encodes nested arrays of primitives",
+    "expected": "pairs[2]:\n  - [2]: a,b\n  - [2]: c,d",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "pairs",
+          "value": [
+            [
+              "a",
+              "b"
+            ],
+            [
+              "c",
+              "d"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Nested and mixed array encoding – arrays of arrays, mixed type arrays, root arrays",
+    "name": "quotes strings containing delimiters in nested arrays",
+    "expected": "pairs[2]:\n  - [2]: a,b\n  - [3]: \"c,d\",\"e:f\",\"true\"",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "pairs",
+          "value": [
+            [
+              "a",
+              "b"
+            ],
+            [
+              "c,d",
+              "e:f",
+              "true"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Nested and mixed array encoding – arrays of arrays, mixed type arrays, root arrays",
+    "name": "encodes empty inner arrays",
+    "expected": "pairs[2]:\n  - [0]:\n  - [0]:",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "pairs",
+          "value": [
+            [],
+            []
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Nested and mixed array encoding – arrays of arrays, mixed type arrays, root arrays",
+    "name": "encodes mixed-length inner arrays",
+    "expected": "pairs[2]:\n  - [1]: 1\n  - [2]: 2,3",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "pairs",
+          "value": [
+            [
+              1
+            ],
+            [
+              2,
+              3
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Nested and mixed array encoding – arrays of arrays, mixed type arrays, root arrays",
+    "name": "encodes root-level primitive array",
+    "expected": "[5]: x,y,\"true\",true,10",
+    "options": {},
+    "input": [
+      "x",
+      "y",
+      "true",
+      true,
+      10
+    ]
+  },
+  {
+    "file": "Nested and mixed array encoding – arrays of arrays, mixed type arrays, root arrays",
+    "name": "encodes root-level array of uniform objects in tabular form",
+    "expected": "[2]{id}:\n  1\n  2",
+    "options": {},
+    "input": [
+      {
+        "_type": "toon-ordered",
+        "entries": [
+          {
+            "name": "id",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "_type": "toon-ordered",
+        "entries": [
+          {
+            "name": "id",
+            "value": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "Nested and mixed array encoding – arrays of arrays, mixed type arrays, root arrays",
+    "name": "encodes root-level array of non-uniform objects in list form",
+    "expected": "[2]:\n  - id: 1\n  - id: 2\n    name: Ada",
+    "options": {},
+    "input": [
+      {
+        "_type": "toon-ordered",
+        "entries": [
+          {
+            "name": "id",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "_type": "toon-ordered",
+        "entries": [
+          {
+            "name": "id",
+            "value": 2
+          },
+          {
+            "name": "name",
+            "value": "Ada"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "Nested and mixed array encoding – arrays of arrays, mixed type arrays, root arrays",
+    "name": "encodes root-level array mixing primitive, object, and array of objects in list form",
+    "expected": "[3]:\n  - summary\n  - id: 1\n    name: Ada\n  - [2]:\n    - id: 2\n    - status: draft",
+    "options": {},
+    "input": [
+      "summary",
+      {
+        "_type": "toon-ordered",
+        "entries": [
+          {
+            "name": "id",
+            "value": 1
+          },
+          {
+            "name": "name",
+            "value": "Ada"
+          }
+        ]
+      },
+      [
+        {
+          "_type": "toon-ordered",
+          "entries": [
+            {
+              "name": "id",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "_type": "toon-ordered",
+          "entries": [
+            {
+              "name": "status",
+              "value": "draft"
+            }
+          ]
+        }
+      ]
+    ]
+  },
+  {
+    "file": "Nested and mixed array encoding – arrays of arrays, mixed type arrays, root arrays",
+    "name": "encodes root-level arrays of arrays",
+    "expected": "[2]:\n  - [2]: 1,2\n  - [0]:",
+    "options": {},
+    "input": [
+      [
+        1,
+        2
+      ],
+      []
+    ]
+  },
+  {
+    "file": "Nested and mixed array encoding – arrays of arrays, mixed type arrays, root arrays",
+    "name": "encodes empty root-level array",
+    "expected": "[]",
+    "options": {},
+    "input": []
+  },
+  {
+    "file": "Nested and mixed array encoding – arrays of arrays, mixed type arrays, root arrays",
+    "name": "encodes complex nested structure",
+    "expected": "user:\n  id: 123\n  name: Ada\n  tags[2]: reading,gaming\n  active: true\n  prefs: []",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "user",
+          "value": {
+            "_type": "toon-ordered",
+            "entries": [
+              {
+                "name": "id",
+                "value": 123
+              },
+              {
+                "name": "name",
+                "value": "Ada"
+              },
+              {
+                "name": "tags",
+                "value": [
+                  "reading",
+                  "gaming"
+                ]
+              },
+              {
+                "name": "active",
+                "value": true
+              },
+              {
+                "name": "prefs",
+                "value": []
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "file": "Nested and mixed array encoding – arrays of arrays, mixed type arrays, root arrays",
+    "name": "uses list form for arrays mixing primitives and objects",
+    "expected": "items[3]:\n  - 1\n  - a: 1\n  - text",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            1,
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "a",
+                  "value": 1
+                }
+              ]
+            },
+            "text"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Nested and mixed array encoding – arrays of arrays, mixed type arrays, root arrays",
+    "name": "uses list form for arrays mixing objects and arrays",
+    "expected": "items[2]:\n  - a: 1\n  - [2]: 1,2",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "a",
+                  "value": 1
+                }
+              ]
+            },
+            [
+              1,
+              2
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Nested and mixed array encoding – arrays of arrays, mixed type arrays, root arrays",
+    "name": "quotes hash-leading string as list item",
+    "expected": "items[2]:\n  - \"#x\"\n  - a: 1",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            "#x",
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "a",
+                  "value": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Nested and mixed array encoding – arrays of arrays, mixed type arrays, root arrays",
+    "name": "uses list form for a tabular-eligible array in list-item position",
+    "expected": "a[1]:\n  - [2]:\n    - x: 1\n    - x: 2",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "a",
+          "value": [
+            [
+              {
+                "_type": "toon-ordered",
+                "entries": [
+                  {
+                    "name": "x",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "_type": "toon-ordered",
+                "entries": [
+                  {
+                    "name": "x",
+                    "value": 2
+                  }
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Arrays of objects encoding – list form for non-uniform objects and complex structures",
+    "name": "uses list form for objects with different fields",
+    "expected": "items[2]:\n  - id: 1\n    name: First\n  - id: 2\n    name: Second\n    extra: true",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 1
+                },
+                {
+                  "name": "name",
+                  "value": "First"
+                }
+              ]
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 2
+                },
+                {
+                  "name": "name",
+                  "value": "Second"
+                },
+                {
+                  "name": "extra",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Arrays of objects encoding – list form for non-uniform objects and complex structures",
+    "name": "uses list form for objects with nested values",
+    "expected": "items[2]:\n  - id: 1\n    nested:\n      x: 1\n  - id: 2\n    nested:\n      y: 2",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 1
+                },
+                {
+                  "name": "nested",
+                  "value": {
+                    "_type": "toon-ordered",
+                    "entries": [
+                      {
+                        "name": "x",
+                        "value": 1
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 2
+                },
+                {
+                  "name": "nested",
+                  "value": {
+                    "_type": "toon-ordered",
+                    "entries": [
+                      {
+                        "name": "y",
+                        "value": 2
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Arrays of objects encoding – list form for non-uniform objects and complex structures",
+    "name": "preserves field order in list items - array first",
+    "expected": "items[1]:\n  - nums[3]: 1,2,3\n    name: Ada",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "nums",
+                  "value": [
+                    1,
+                    2,
+                    3
+                  ]
+                },
+                {
+                  "name": "name",
+                  "value": "Ada"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Arrays of objects encoding – list form for non-uniform objects and complex structures",
+    "name": "preserves field order in list items - primitive first",
+    "expected": "items[1]:\n  - name: Ada\n    nums[3]: 1,2,3",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "name",
+                  "value": "Ada"
+                },
+                {
+                  "name": "nums",
+                  "value": [
+                    1,
+                    2,
+                    3
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Arrays of objects encoding – list form for non-uniform objects and complex structures",
+    "name": "uses list form for objects containing arrays of arrays",
+    "expected": "items[1]:\n  - matrix[2]:\n      - [2]: 1,2\n      - [2]: 3,4\n    name: grid",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "matrix",
+                  "value": [
+                    [
+                      1,
+                      2
+                    ],
+                    [
+                      3,
+                      4
+                    ]
+                  ]
+                },
+                {
+                  "name": "name",
+                  "value": "grid"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Arrays of objects encoding – list form for non-uniform objects and complex structures",
+    "name": "uses tabular form for nested uniform object arrays",
+    "expected": "items[1]:\n  - users[2]{id,name}:\n      1,Ada\n      2,Bob\n    status: active",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "users",
+                  "value": [
+                    {
+                      "_type": "toon-ordered",
+                      "entries": [
+                        {
+                          "name": "id",
+                          "value": 1
+                        },
+                        {
+                          "name": "name",
+                          "value": "Ada"
+                        }
+                      ]
+                    },
+                    {
+                      "_type": "toon-ordered",
+                      "entries": [
+                        {
+                          "name": "id",
+                          "value": 2
+                        },
+                        {
+                          "name": "name",
+                          "value": "Bob"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "status",
+                  "value": "active"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Arrays of objects encoding – list form for non-uniform objects and complex structures",
+    "name": "uses list form for nested object arrays with mismatched keys",
+    "expected": "items[1]:\n  - users[2]:\n      - id: 1\n        name: Ada\n      - id: 2\n    status: active",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "users",
+                  "value": [
+                    {
+                      "_type": "toon-ordered",
+                      "entries": [
+                        {
+                          "name": "id",
+                          "value": 1
+                        },
+                        {
+                          "name": "name",
+                          "value": "Ada"
+                        }
+                      ]
+                    },
+                    {
+                      "_type": "toon-ordered",
+                      "entries": [
+                        {
+                          "name": "id",
+                          "value": 2
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "status",
+                  "value": "active"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Arrays of objects encoding – list form for non-uniform objects and complex structures",
+    "name": "uses list form for objects with multiple array fields",
+    "expected": "items[1]:\n  - nums[2]: 1,2\n    tags[2]: a,b\n    name: test",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "nums",
+                  "value": [
+                    1,
+                    2
+                  ]
+                },
+                {
+                  "name": "tags",
+                  "value": [
+                    "a",
+                    "b"
+                  ]
+                },
+                {
+                  "name": "name",
+                  "value": "test"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Arrays of objects encoding – list form for non-uniform objects and complex structures",
+    "name": "uses list form for objects with only array fields",
+    "expected": "items[1]:\n  - nums[3]: 1,2,3\n    tags[2]: a,b",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "nums",
+                  "value": [
+                    1,
+                    2,
+                    3
+                  ]
+                },
+                {
+                  "name": "tags",
+                  "value": [
+                    "a",
+                    "b"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Arrays of objects encoding – list form for non-uniform objects and complex structures",
+    "name": "encodes objects with empty arrays in list form",
+    "expected": "items[1]:\n  - name: Ada\n    data: []",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "name",
+                  "value": "Ada"
+                },
+                {
+                  "name": "data",
+                  "value": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Arrays of objects encoding – list form for non-uniform objects and complex structures",
+    "name": "uses canonical encoding for multi-field list-item objects with tabular arrays",
+    "expected": "items[1]:\n  - users[2]{id}:\n      1\n      2\n    note: x",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "users",
+                  "value": [
+                    {
+                      "_type": "toon-ordered",
+                      "entries": [
+                        {
+                          "name": "id",
+                          "value": 1
+                        }
+                      ]
+                    },
+                    {
+                      "_type": "toon-ordered",
+                      "entries": [
+                        {
+                          "name": "id",
+                          "value": 2
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "note",
+                  "value": "x"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Arrays of objects encoding – list form for non-uniform objects and complex structures",
+    "name": "uses canonical encoding for single-field list-item tabular arrays",
+    "expected": "items[1]:\n  - users[2]{id,name}:\n      1,Ada\n      2,Bob",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "users",
+                  "value": [
+                    {
+                      "_type": "toon-ordered",
+                      "entries": [
+                        {
+                          "name": "id",
+                          "value": 1
+                        },
+                        {
+                          "name": "name",
+                          "value": "Ada"
+                        }
+                      ]
+                    },
+                    {
+                      "_type": "toon-ordered",
+                      "entries": [
+                        {
+                          "name": "id",
+                          "value": 2
+                        },
+                        {
+                          "name": "name",
+                          "value": "Bob"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Arrays of objects encoding – list form for non-uniform objects and complex structures",
+    "name": "places empty arrays on hyphen line when first",
+    "expected": "items[1]:\n  - data: []\n    name: x",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "data",
+                  "value": []
+                },
+                {
+                  "name": "name",
+                  "value": "x"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Arrays of objects encoding – list form for non-uniform objects and complex structures",
+    "name": "encodes empty object list items as bare hyphen",
+    "expected": "items[3]:\n  - first\n  - second\n  -",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            "first",
+            "second",
+            {
+              "_type": "toon-ordered",
+              "entries": []
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Arrays of objects encoding – list form for non-uniform objects and complex structures",
+    "name": "uses field order from first object for tabular headers",
+    "expected": "items[2]{a,b,c}:\n  1,2,3\n  10,20,30",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "a",
+                  "value": 1
+                },
+                {
+                  "name": "b",
+                  "value": 2
+                },
+                {
+                  "name": "c",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "c",
+                  "value": 30
+                },
+                {
+                  "name": "b",
+                  "value": 20
+                },
+                {
+                  "name": "a",
+                  "value": 10
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Arrays of objects encoding – list form for non-uniform objects and complex structures",
+    "name": "uses list form when one object has nested field",
+    "expected": "items[2]:\n  - id: 1\n    data: string\n  - id: 2\n    data:\n      nested: true",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 1
+                },
+                {
+                  "name": "data",
+                  "value": "string"
+                }
+              ]
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 2
+                },
+                {
+                  "name": "data",
+                  "value": {
+                    "_type": "toon-ordered",
+                    "entries": [
+                      {
+                        "name": "nested",
+                        "value": true
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Arrays of objects encoding – list form for non-uniform objects and complex structures",
+    "name": "uses list form for arrays containing empty objects",
+    "expected": "items[2]:\n  -\n  -",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": []
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": []
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Arrays of objects encoding – list form for non-uniform objects and complex structures",
+    "name": "encodes a keyed-eligible object in a tabular column as a nested field group",
+    "expected": "a[1]{t{p{x},q{x}},other}:\n  1,2,9",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "a",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "t",
+                  "value": {
+                    "_type": "toon-ordered",
+                    "entries": [
+                      {
+                        "name": "p",
+                        "value": {
+                          "_type": "toon-ordered",
+                          "entries": [
+                            {
+                              "name": "x",
+                              "value": 1
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "name": "q",
+                        "value": {
+                          "_type": "toon-ordered",
+                          "entries": [
+                            {
+                              "name": "x",
+                              "value": 2
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "other",
+                  "value": 9
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Primitive array encoding – inline arrays of strings, numbers, booleans",
+    "name": "encodes string arrays inline",
+    "expected": "tags[2]: reading,gaming",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "tags",
+          "value": [
+            "reading",
+            "gaming"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Primitive array encoding – inline arrays of strings, numbers, booleans",
+    "name": "encodes number arrays inline",
+    "expected": "nums[3]: 1,2,3",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "nums",
+          "value": [
+            1,
+            2,
+            3
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Primitive array encoding – inline arrays of strings, numbers, booleans",
+    "name": "encodes mixed primitive arrays inline",
+    "expected": "data[4]: x,y,true,10",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "data",
+          "value": [
+            "x",
+            "y",
+            true,
+            10
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Primitive array encoding – inline arrays of strings, numbers, booleans",
+    "name": "encodes empty arrays",
+    "expected": "items: []",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": []
+        }
+      ]
+    }
+  },
+  {
+    "file": "Primitive array encoding – inline arrays of strings, numbers, booleans",
+    "name": "encodes empty string keys for inline arrays",
+    "expected": "\"\"[3]: 1,2,3",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "",
+          "value": [
+            1,
+            2,
+            3
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Primitive array encoding – inline arrays of strings, numbers, booleans",
+    "name": "encodes empty string keys for empty arrays",
+    "expected": "\"\": []",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "",
+          "value": []
+        }
+      ]
+    }
+  },
+  {
+    "file": "Primitive array encoding – inline arrays of strings, numbers, booleans",
+    "name": "encodes empty string in single-item array",
+    "expected": "items[1]: \"\"",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            ""
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Primitive array encoding – inline arrays of strings, numbers, booleans",
+    "name": "encodes empty string in multi-item array",
+    "expected": "items[3]: a,\"\",b",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            "a",
+            "",
+            "b"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Primitive array encoding – inline arrays of strings, numbers, booleans",
+    "name": "encodes whitespace-only strings in arrays",
+    "expected": "items[2]: \" \",\"  \"",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            " ",
+            "  "
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Primitive array encoding – inline arrays of strings, numbers, booleans",
+    "name": "quotes array strings with comma",
+    "expected": "items[3]: a,\"b,c\",\"d:e\"",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            "a",
+            "b,c",
+            "d:e"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Primitive array encoding – inline arrays of strings, numbers, booleans",
+    "name": "quotes strings that look like booleans in arrays",
+    "expected": "items[4]: x,\"true\",\"42\",\"-3.14\"",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            "x",
+            "true",
+            "42",
+            "-3.14"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Primitive array encoding – inline arrays of strings, numbers, booleans",
+    "name": "quotes strings with structural meanings in arrays",
+    "expected": "items[3]: \"[5]\",\"- item\",\"{key}\"",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            "[5]",
+            "- item",
+            "{key}"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Primitive array encoding – inline arrays of strings, numbers, booleans",
+    "name": "quotes hash-leading string in inline array",
+    "expected": "tags[2]: \"#a\",b",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "tags",
+          "value": [
+            "#a",
+            "b"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Tabular array encoding – arrays of uniform objects with primitive values",
+    "name": "encodes arrays of uniform objects in tabular form",
+    "expected": "items[2]{sku,qty,price}:\n  A1,2,9.99\n  B2,1,14.5",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "sku",
+                  "value": "A1"
+                },
+                {
+                  "name": "qty",
+                  "value": 2
+                },
+                {
+                  "name": "price",
+                  "value": 9.99
+                }
+              ]
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "sku",
+                  "value": "B2"
+                },
+                {
+                  "name": "qty",
+                  "value": 1
+                },
+                {
+                  "name": "price",
+                  "value": 14.5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Tabular array encoding – arrays of uniform objects with primitive values",
+    "name": "encodes null values in tabular form",
+    "expected": "items[2]{id,value}:\n  1,null\n  2,test",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 1
+                },
+                {
+                  "name": "value",
+                  "value": null
+                }
+              ]
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 2
+                },
+                {
+                  "name": "value",
+                  "value": "test"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Tabular array encoding – arrays of uniform objects with primitive values",
+    "name": "quotes strings containing delimiters in tabular rows",
+    "expected": "items[2]{sku,desc,qty}:\n  \"A,1\",cool,2\n  B2,\"wip: test\",1",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "sku",
+                  "value": "A,1"
+                },
+                {
+                  "name": "desc",
+                  "value": "cool"
+                },
+                {
+                  "name": "qty",
+                  "value": 2
+                }
+              ]
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "sku",
+                  "value": "B2"
+                },
+                {
+                  "name": "desc",
+                  "value": "wip: test"
+                },
+                {
+                  "name": "qty",
+                  "value": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Tabular array encoding – arrays of uniform objects with primitive values",
+    "name": "quotes ambiguous strings in tabular rows",
+    "expected": "items[2]{id,status}:\n  1,\"true\"\n  2,\"false\"",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 1
+                },
+                {
+                  "name": "status",
+                  "value": "true"
+                }
+              ]
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 2
+                },
+                {
+                  "name": "status",
+                  "value": "false"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Tabular array encoding – arrays of uniform objects with primitive values",
+    "name": "encodes tabular arrays with keys needing quotes",
+    "expected": "items[2]{\"order:id\",\"full name\"}:\n  1,Ada\n  2,Bob",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "order:id",
+                  "value": 1
+                },
+                {
+                  "name": "full name",
+                  "value": "Ada"
+                }
+              ]
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "order:id",
+                  "value": 2
+                },
+                {
+                  "name": "full name",
+                  "value": "Bob"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Tabular array encoding – arrays of uniform objects with primitive values",
+    "name": "encodes tabular arrays with empty string keys",
+    "expected": "\"\"[2]{id,name}:\n  1,Ada\n  2,Bob",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 1
+                },
+                {
+                  "name": "name",
+                  "value": "Ada"
+                }
+              ]
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 2
+                },
+                {
+                  "name": "name",
+                  "value": "Bob"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Tabular array encoding – arrays of uniform objects with primitive values",
+    "name": "quotes hash-leading string in tabular cell",
+    "expected": "items[2]{tag}:\n  \"#a\"\n  b",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "tag",
+                  "value": "#a"
+                }
+              ]
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "tag",
+                  "value": "b"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Tabular array encoding – arrays of uniform objects with primitive values",
+    "name": "collapses a uniform nested object column into a nested field group",
+    "expected": "orders[2]{id,customer{name,country},total}:\n  1,Ada,DK,99\n  2,Bob,UK,149",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "orders",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 1
+                },
+                {
+                  "name": "customer",
+                  "value": {
+                    "_type": "toon-ordered",
+                    "entries": [
+                      {
+                        "name": "name",
+                        "value": "Ada"
+                      },
+                      {
+                        "name": "country",
+                        "value": "DK"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "total",
+                  "value": 99
+                }
+              ]
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 2
+                },
+                {
+                  "name": "customer",
+                  "value": {
+                    "_type": "toon-ordered",
+                    "entries": [
+                      {
+                        "name": "name",
+                        "value": "Bob"
+                      },
+                      {
+                        "name": "country",
+                        "value": "UK"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "total",
+                  "value": 149
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Tabular array encoding – arrays of uniform objects with primitive values",
+    "name": "collapses sibling nested field groups with depth-first row layout",
+    "expected": "shipments[1]{id,sender{name,city},receiver{name,city}}:\n  s1,ACME,Berlin,Globex,Oslo",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "shipments",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": "s1"
+                },
+                {
+                  "name": "sender",
+                  "value": {
+                    "_type": "toon-ordered",
+                    "entries": [
+                      {
+                        "name": "name",
+                        "value": "ACME"
+                      },
+                      {
+                        "name": "city",
+                        "value": "Berlin"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "receiver",
+                  "value": {
+                    "_type": "toon-ordered",
+                    "entries": [
+                      {
+                        "name": "name",
+                        "value": "Globex"
+                      },
+                      {
+                        "name": "city",
+                        "value": "Oslo"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Tabular array encoding – arrays of uniform objects with primitive values",
+    "name": "collapses nested field groups recursively without a depth cap",
+    "expected": "items[2]{id,geo{point{lat,lon}}}:\n  1,1.5,2.5\n  2,3,4",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 1
+                },
+                {
+                  "name": "geo",
+                  "value": {
+                    "_type": "toon-ordered",
+                    "entries": [
+                      {
+                        "name": "point",
+                        "value": {
+                          "_type": "toon-ordered",
+                          "entries": [
+                            {
+                              "name": "lat",
+                              "value": 1.5
+                            },
+                            {
+                              "name": "lon",
+                              "value": 2.5
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 2
+                },
+                {
+                  "name": "geo",
+                  "value": {
+                    "_type": "toon-ordered",
+                    "entries": [
+                      {
+                        "name": "point",
+                        "value": {
+                          "_type": "toon-ordered",
+                          "entries": [
+                            {
+                              "name": "lat",
+                              "value": 3
+                            },
+                            {
+                              "name": "lon",
+                              "value": 4
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Tabular array encoding – arrays of uniform objects with primitive values",
+    "name": "uses the active delimiter inside nested field groups",
+    "expected": "orders[2|]{id|customer{name|country}|total}:\n  1|Ada|DK|99\n  2|Bob|UK|149",
+    "options": {
+      "delimiter": "|"
+    },
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "orders",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 1
+                },
+                {
+                  "name": "customer",
+                  "value": {
+                    "_type": "toon-ordered",
+                    "entries": [
+                      {
+                        "name": "name",
+                        "value": "Ada"
+                      },
+                      {
+                        "name": "country",
+                        "value": "DK"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "total",
+                  "value": 99
+                }
+              ]
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 2
+                },
+                {
+                  "name": "customer",
+                  "value": {
+                    "_type": "toon-ordered",
+                    "entries": [
+                      {
+                        "name": "name",
+                        "value": "Bob"
+                      },
+                      {
+                        "name": "country",
+                        "value": "UK"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "total",
+                  "value": 149
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Tabular array encoding – arrays of uniform objects with primitive values",
+    "name": "quotes subfield names inside nested field groups per key encoding",
+    "expected": "items[1]{id,customer{\"full name\",country}}:\n  1,Ada,UK",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 1
+                },
+                {
+                  "name": "customer",
+                  "value": {
+                    "_type": "toon-ordered",
+                    "entries": [
+                      {
+                        "name": "full name",
+                        "value": "Ada"
+                      },
+                      {
+                        "name": "country",
+                        "value": "UK"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Tabular array encoding – arrays of uniform objects with primitive values",
+    "name": "falls back to list form when nested object keys differ per row",
+    "expected": "entries[2]:\n  - id: 1\n    meta:\n      a: 1\n  - id: 2\n    meta:\n      b: 2",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "entries",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 1
+                },
+                {
+                  "name": "meta",
+                  "value": {
+                    "_type": "toon-ordered",
+                    "entries": [
+                      {
+                        "name": "a",
+                        "value": 1
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 2
+                },
+                {
+                  "name": "meta",
+                  "value": {
+                    "_type": "toon-ordered",
+                    "entries": [
+                      {
+                        "name": "b",
+                        "value": 2
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Tabular array encoding – arrays of uniform objects with primitive values",
+    "name": "falls back to list form when a column mixes null and objects",
+    "expected": "orders[2]:\n  - id: 1\n    customer:\n      name: Ada\n  - id: 2\n    customer: null",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "orders",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 1
+                },
+                {
+                  "name": "customer",
+                  "value": {
+                    "_type": "toon-ordered",
+                    "entries": [
+                      {
+                        "name": "name",
+                        "value": "Ada"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 2
+                },
+                {
+                  "name": "customer",
+                  "value": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Tabular array encoding – arrays of uniform objects with primitive values",
+    "name": "falls back to list form when a nested object contains an array",
+    "expected": "orders[1]:\n  - id: 1\n    customer:\n      name: Ada\n      tags[1]: x",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "orders",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 1
+                },
+                {
+                  "name": "customer",
+                  "value": {
+                    "_type": "toon-ordered",
+                    "entries": [
+                      {
+                        "name": "name",
+                        "value": "Ada"
+                      },
+                      {
+                        "name": "tags",
+                        "value": [
+                          "x"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Tabular array encoding – arrays of uniform objects with primitive values",
+    "name": "falls back to list form when a nested column contains an empty object",
+    "expected": "items[1]:\n  - id: 1\n    meta:",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 1
+                },
+                {
+                  "name": "meta",
+                  "value": {
+                    "_type": "toon-ordered",
+                    "entries": []
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Delimiter options – tab and pipe delimiters, delimiter-aware quoting",
+    "name": "encodes primitive arrays with tab delimiter",
+    "expected": "tags[3\t]: reading\tgaming\tcoding",
+    "options": {
+      "delimiter": "\t"
+    },
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "tags",
+          "value": [
+            "reading",
+            "gaming",
+            "coding"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Delimiter options – tab and pipe delimiters, delimiter-aware quoting",
+    "name": "encodes primitive arrays with pipe delimiter",
+    "expected": "tags[3|]: reading|gaming|coding",
+    "options": {
+      "delimiter": "|"
+    },
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "tags",
+          "value": [
+            "reading",
+            "gaming",
+            "coding"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Delimiter options – tab and pipe delimiters, delimiter-aware quoting",
+    "name": "encodes primitive arrays with comma delimiter",
+    "expected": "tags[3]: reading,gaming,coding",
+    "options": {
+      "delimiter": ","
+    },
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "tags",
+          "value": [
+            "reading",
+            "gaming",
+            "coding"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Delimiter options – tab and pipe delimiters, delimiter-aware quoting",
+    "name": "encodes tabular arrays with tab delimiter",
+    "expected": "items[2\t]{sku\tqty\tprice}:\n  A1\t2\t9.99\n  B2\t1\t14.5",
+    "options": {
+      "delimiter": "\t"
+    },
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "sku",
+                  "value": "A1"
+                },
+                {
+                  "name": "qty",
+                  "value": 2
+                },
+                {
+                  "name": "price",
+                  "value": 9.99
+                }
+              ]
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "sku",
+                  "value": "B2"
+                },
+                {
+                  "name": "qty",
+                  "value": 1
+                },
+                {
+                  "name": "price",
+                  "value": 14.5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Delimiter options – tab and pipe delimiters, delimiter-aware quoting",
+    "name": "encodes tabular arrays with pipe delimiter",
+    "expected": "items[2|]{sku|qty|price}:\n  A1|2|9.99\n  B2|1|14.5",
+    "options": {
+      "delimiter": "|"
+    },
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "sku",
+                  "value": "A1"
+                },
+                {
+                  "name": "qty",
+                  "value": 2
+                },
+                {
+                  "name": "price",
+                  "value": 9.99
+                }
+              ]
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "sku",
+                  "value": "B2"
+                },
+                {
+                  "name": "qty",
+                  "value": 1
+                },
+                {
+                  "name": "price",
+                  "value": 14.5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Delimiter options – tab and pipe delimiters, delimiter-aware quoting",
+    "name": "encodes nested arrays with tab delimiter",
+    "expected": "pairs[2\t]:\n  - [2\t]: a\tb\n  - [2\t]: c\td",
+    "options": {
+      "delimiter": "\t"
+    },
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "pairs",
+          "value": [
+            [
+              "a",
+              "b"
+            ],
+            [
+              "c",
+              "d"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Delimiter options – tab and pipe delimiters, delimiter-aware quoting",
+    "name": "encodes nested arrays with pipe delimiter",
+    "expected": "pairs[2|]:\n  - [2|]: a|b\n  - [2|]: c|d",
+    "options": {
+      "delimiter": "|"
+    },
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "pairs",
+          "value": [
+            [
+              "a",
+              "b"
+            ],
+            [
+              "c",
+              "d"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Delimiter options – tab and pipe delimiters, delimiter-aware quoting",
+    "name": "encodes root-level array with tab delimiter",
+    "expected": "[3\t]: x\ty\tz",
+    "options": {
+      "delimiter": "\t"
+    },
+    "input": [
+      "x",
+      "y",
+      "z"
+    ]
+  },
+  {
+    "file": "Delimiter options – tab and pipe delimiters, delimiter-aware quoting",
+    "name": "encodes root-level array with pipe delimiter",
+    "expected": "[3|]: x|y|z",
+    "options": {
+      "delimiter": "|"
+    },
+    "input": [
+      "x",
+      "y",
+      "z"
+    ]
+  },
+  {
+    "file": "Delimiter options – tab and pipe delimiters, delimiter-aware quoting",
+    "name": "encodes root-level array of objects with tab delimiter",
+    "expected": "[2\t]{id}:\n  1\n  2",
+    "options": {
+      "delimiter": "\t"
+    },
+    "input": [
+      {
+        "_type": "toon-ordered",
+        "entries": [
+          {
+            "name": "id",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "_type": "toon-ordered",
+        "entries": [
+          {
+            "name": "id",
+            "value": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "Delimiter options – tab and pipe delimiters, delimiter-aware quoting",
+    "name": "encodes root-level array of objects with pipe delimiter",
+    "expected": "[2|]{id}:\n  1\n  2",
+    "options": {
+      "delimiter": "|"
+    },
+    "input": [
+      {
+        "_type": "toon-ordered",
+        "entries": [
+          {
+            "name": "id",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "_type": "toon-ordered",
+        "entries": [
+          {
+            "name": "id",
+            "value": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "Delimiter options – tab and pipe delimiters, delimiter-aware quoting",
+    "name": "quotes strings containing tab delimiter",
+    "expected": "items[3\t]: a\t\"b\\tc\"\td",
+    "options": {
+      "delimiter": "\t"
+    },
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            "a",
+            "b\tc",
+            "d"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Delimiter options – tab and pipe delimiters, delimiter-aware quoting",
+    "name": "quotes strings containing pipe delimiter",
+    "expected": "items[3|]: a|\"b|c\"|d",
+    "options": {
+      "delimiter": "|"
+    },
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            "a",
+            "b|c",
+            "d"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Delimiter options – tab and pipe delimiters, delimiter-aware quoting",
+    "name": "does not quote commas with tab delimiter",
+    "expected": "items[2\t]: a,b\tc,d",
+    "options": {
+      "delimiter": "\t"
+    },
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            "a,b",
+            "c,d"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Delimiter options – tab and pipe delimiters, delimiter-aware quoting",
+    "name": "does not quote commas with pipe delimiter",
+    "expected": "items[2|]: a,b|c,d",
+    "options": {
+      "delimiter": "|"
+    },
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            "a,b",
+            "c,d"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Delimiter options – tab and pipe delimiters, delimiter-aware quoting",
+    "name": "quotes tabular values containing comma delimiter",
+    "expected": "items[2]{id,note}:\n  1,\"a,b\"\n  2,\"c,d\"",
+    "options": {
+      "delimiter": ","
+    },
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 1
+                },
+                {
+                  "name": "note",
+                  "value": "a,b"
+                }
+              ]
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 2
+                },
+                {
+                  "name": "note",
+                  "value": "c,d"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Delimiter options – tab and pipe delimiters, delimiter-aware quoting",
+    "name": "does not quote commas in tabular values with tab delimiter",
+    "expected": "items[2\t]{id\tnote}:\n  1\ta,b\n  2\tc,d",
+    "options": {
+      "delimiter": "\t"
+    },
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 1
+                },
+                {
+                  "name": "note",
+                  "value": "a,b"
+                }
+              ]
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "id",
+                  "value": 2
+                },
+                {
+                  "name": "note",
+                  "value": "c,d"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Delimiter options – tab and pipe delimiters, delimiter-aware quoting",
+    "name": "does not quote commas in object values with pipe delimiter",
+    "expected": "note: a,b",
+    "options": {
+      "delimiter": "|"
+    },
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "note",
+          "value": "a,b"
+        }
+      ]
+    }
+  },
+  {
+    "file": "Delimiter options – tab and pipe delimiters, delimiter-aware quoting",
+    "name": "does not quote commas in object values with tab delimiter",
+    "expected": "note: a,b",
+    "options": {
+      "delimiter": "\t"
+    },
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "note",
+          "value": "a,b"
+        }
+      ]
+    }
+  },
+  {
+    "file": "Delimiter options – tab and pipe delimiters, delimiter-aware quoting",
+    "name": "quotes nested array values containing pipe delimiter",
+    "expected": "pairs[1|]:\n  - [2|]: a|\"b|c\"",
+    "options": {
+      "delimiter": "|"
+    },
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "pairs",
+          "value": [
+            [
+              "a",
+              "b|c"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Delimiter options – tab and pipe delimiters, delimiter-aware quoting",
+    "name": "quotes nested array values containing tab delimiter",
+    "expected": "pairs[1\t]:\n  - [2\t]: a\t\"b\\tc\"",
+    "options": {
+      "delimiter": "\t"
+    },
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "pairs",
+          "value": [
+            [
+              "a",
+              "b\tc"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Delimiter options – tab and pipe delimiters, delimiter-aware quoting",
+    "name": "preserves ambiguity quoting regardless of delimiter",
+    "expected": "items[3|]: \"true\"|\"42\"|\"-3.14\"",
+    "options": {
+      "delimiter": "|"
+    },
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            "true",
+            "42",
+            "-3.14"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Keyed tabular encoding – objects whose values are uniform objects collapse into keyed headers with entry rows",
+    "name": "encodes objects of uniform objects in keyed tabular form",
+    "expected": "servers[2:]{host,port}:\n  alpha: a.example.com,8080\n  beta: b.example.com,9090",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "servers",
+          "value": {
+            "_type": "toon-ordered",
+            "entries": [
+              {
+                "name": "alpha",
+                "value": {
+                  "_type": "toon-ordered",
+                  "entries": [
+                    {
+                      "name": "host",
+                      "value": "a.example.com"
+                    },
+                    {
+                      "name": "port",
+                      "value": 8080
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "beta",
+                "value": {
+                  "_type": "toon-ordered",
+                  "entries": [
+                    {
+                      "name": "host",
+                      "value": "b.example.com"
+                    },
+                    {
+                      "name": "port",
+                      "value": 9090
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "file": "Keyed tabular encoding – objects whose values are uniform objects collapse into keyed headers with entry rows",
+    "name": "encodes an eligible root object with a keyless keyed header",
+    "expected": "[2:]{age,city}:\n  alice: 30,Berlin\n  bob: 25,Oslo",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "alice",
+          "value": {
+            "_type": "toon-ordered",
+            "entries": [
+              {
+                "name": "age",
+                "value": 30
+              },
+              {
+                "name": "city",
+                "value": "Berlin"
+              }
+            ]
+          }
+        },
+        {
+          "name": "bob",
+          "value": {
+            "_type": "toon-ordered",
+            "entries": [
+              {
+                "name": "age",
+                "value": 25
+              },
+              {
+                "name": "city",
+                "value": "Oslo"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "file": "Keyed tabular encoding – objects whose values are uniform objects collapse into keyed headers with entry rows",
+    "name": "collapses uniform nested object columns inside keyed headers",
+    "expected": "regions[2:]{name,geo{lat,lon}}:\n  eu: Europe,50,10\n  us: America,40,-100",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "regions",
+          "value": {
+            "_type": "toon-ordered",
+            "entries": [
+              {
+                "name": "eu",
+                "value": {
+                  "_type": "toon-ordered",
+                  "entries": [
+                    {
+                      "name": "name",
+                      "value": "Europe"
+                    },
+                    {
+                      "name": "geo",
+                      "value": {
+                        "_type": "toon-ordered",
+                        "entries": [
+                          {
+                            "name": "lat",
+                            "value": 50
+                          },
+                          {
+                            "name": "lon",
+                            "value": 10
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "us",
+                "value": {
+                  "_type": "toon-ordered",
+                  "entries": [
+                    {
+                      "name": "name",
+                      "value": "America"
+                    },
+                    {
+                      "name": "geo",
+                      "value": {
+                        "_type": "toon-ordered",
+                        "entries": [
+                          {
+                            "name": "lat",
+                            "value": 40
+                          },
+                          {
+                            "name": "lon",
+                            "value": -100
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "file": "Keyed tabular encoding – objects whose values are uniform objects collapse into keyed headers with entry rows",
+    "name": "orders fields by the first entry value's encounter order",
+    "expected": "m[2:]{x,y}:\n  a: 1,2\n  b: 3,4",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "m",
+          "value": {
+            "_type": "toon-ordered",
+            "entries": [
+              {
+                "name": "a",
+                "value": {
+                  "_type": "toon-ordered",
+                  "entries": [
+                    {
+                      "name": "x",
+                      "value": 1
+                    },
+                    {
+                      "name": "y",
+                      "value": 2
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "b",
+                "value": {
+                  "_type": "toon-ordered",
+                  "entries": [
+                    {
+                      "name": "y",
+                      "value": 4
+                    },
+                    {
+                      "name": "x",
+                      "value": 3
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "file": "Keyed tabular encoding – objects whose values are uniform objects collapse into keyed headers with entry rows",
+    "name": "uses the active delimiter in keyed headers and entry-row cells",
+    "expected": "servers[2:|]{host|port}:\n  alpha: a.example.com|8080\n  beta: b.example.com|9090",
+    "options": {
+      "delimiter": "|"
+    },
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "servers",
+          "value": {
+            "_type": "toon-ordered",
+            "entries": [
+              {
+                "name": "alpha",
+                "value": {
+                  "_type": "toon-ordered",
+                  "entries": [
+                    {
+                      "name": "host",
+                      "value": "a.example.com"
+                    },
+                    {
+                      "name": "port",
+                      "value": 8080
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "beta",
+                "value": {
+                  "_type": "toon-ordered",
+                  "entries": [
+                    {
+                      "name": "host",
+                      "value": "b.example.com"
+                    },
+                    {
+                      "name": "port",
+                      "value": 9090
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "file": "Keyed tabular encoding – objects whose values are uniform objects collapse into keyed headers with entry rows",
+    "name": "quotes entry keys per key encoding",
+    "expected": "ids[2:]{v}:\n  \"42\": 1\n  \"my key\": 2",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "ids",
+          "value": {
+            "_type": "toon-ordered",
+            "entries": [
+              {
+                "name": "42",
+                "value": {
+                  "_type": "toon-ordered",
+                  "entries": [
+                    {
+                      "name": "v",
+                      "value": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "my key",
+                "value": {
+                  "_type": "toon-ordered",
+                  "entries": [
+                    {
+                      "name": "v",
+                      "value": 2
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "file": "Keyed tabular encoding – objects whose values are uniform objects collapse into keyed headers with entry rows",
+    "name": "quotes entry-row cells containing the active delimiter",
+    "expected": "notes[2:]{text}:\n  n1: \"a,b\"\n  n2: c",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "notes",
+          "value": {
+            "_type": "toon-ordered",
+            "entries": [
+              {
+                "name": "n1",
+                "value": {
+                  "_type": "toon-ordered",
+                  "entries": [
+                    {
+                      "name": "text",
+                      "value": "a,b"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "n2",
+                "value": {
+                  "_type": "toon-ordered",
+                  "entries": [
+                    {
+                      "name": "text",
+                      "value": "c"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "file": "Keyed tabular encoding – objects whose values are uniform objects collapse into keyed headers with entry rows",
+    "name": "keeps single-entry objects in nested form",
+    "expected": "config:\n  only:\n    a: 1\n    b: 2",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "config",
+          "value": {
+            "_type": "toon-ordered",
+            "entries": [
+              {
+                "name": "only",
+                "value": {
+                  "_type": "toon-ordered",
+                  "entries": [
+                    {
+                      "name": "a",
+                      "value": 1
+                    },
+                    {
+                      "name": "b",
+                      "value": 2
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "file": "Keyed tabular encoding – objects whose values are uniform objects collapse into keyed headers with entry rows",
+    "name": "keeps objects in nested form when entry values have differing key sets",
+    "expected": "envs:\n  dev:\n    host: x\n  prod:\n    host: y\n    port: 1",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "envs",
+          "value": {
+            "_type": "toon-ordered",
+            "entries": [
+              {
+                "name": "dev",
+                "value": {
+                  "_type": "toon-ordered",
+                  "entries": [
+                    {
+                      "name": "host",
+                      "value": "x"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "prod",
+                "value": {
+                  "_type": "toon-ordered",
+                  "entries": [
+                    {
+                      "name": "host",
+                      "value": "y"
+                    },
+                    {
+                      "name": "port",
+                      "value": 1
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "file": "Keyed tabular encoding – objects whose values are uniform objects collapse into keyed headers with entry rows",
+    "name": "keeps objects in nested form when a value is primitive",
+    "expected": "m:\n  a:\n    x: 1\n  b: 2",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "m",
+          "value": {
+            "_type": "toon-ordered",
+            "entries": [
+              {
+                "name": "a",
+                "value": {
+                  "_type": "toon-ordered",
+                  "entries": [
+                    {
+                      "name": "x",
+                      "value": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "b",
+                "value": 2
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "file": "Keyed tabular encoding – objects whose values are uniform objects collapse into keyed headers with entry rows",
+    "name": "keeps objects in nested form when an entry value contains an array",
+    "expected": "m:\n  a:\n    tags[1]: x\n  b:\n    tags[1]: y",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "m",
+          "value": {
+            "_type": "toon-ordered",
+            "entries": [
+              {
+                "name": "a",
+                "value": {
+                  "_type": "toon-ordered",
+                  "entries": [
+                    {
+                      "name": "tags",
+                      "value": [
+                        "x"
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "b",
+                "value": {
+                  "_type": "toon-ordered",
+                  "entries": [
+                    {
+                      "name": "tags",
+                      "value": [
+                        "y"
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "file": "Keyed tabular encoding – objects whose values are uniform objects collapse into keyed headers with entry rows",
+    "name": "emits a keyed header on the hyphen line when it is the first field of a list item",
+    "expected": "items[2]:\n  - config[2:]{x}:\n      a: 1\n      b: 2\n    status: ok\n  - status: down",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "config",
+                  "value": {
+                    "_type": "toon-ordered",
+                    "entries": [
+                      {
+                        "name": "a",
+                        "value": {
+                          "_type": "toon-ordered",
+                          "entries": [
+                            {
+                              "name": "x",
+                              "value": 1
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "name": "b",
+                        "value": {
+                          "_type": "toon-ordered",
+                          "entries": [
+                            {
+                              "name": "x",
+                              "value": 2
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "status",
+                  "value": "ok"
+                }
+              ]
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "status",
+                  "value": "down"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Keyed tabular encoding – objects whose values are uniform objects collapse into keyed headers with entry rows",
+    "name": "never encodes an anonymous array element in keyed tabular form",
+    "expected": "items[2]:\n  - a:\n      x: 1\n    b:\n      x: 2\n  - 5",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "a",
+                  "value": {
+                    "_type": "toon-ordered",
+                    "entries": [
+                      {
+                        "name": "x",
+                        "value": 1
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "b",
+                  "value": {
+                    "_type": "toon-ordered",
+                    "entries": [
+                      {
+                        "name": "x",
+                        "value": 2
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            5
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "preserves key order in objects",
+    "expected": "id: 123\nname: Ada\nactive: true",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "id",
+          "value": 123
+        },
+        {
+          "name": "name",
+          "value": "Ada"
+        },
+        {
+          "name": "active",
+          "value": true
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "encodes null values in objects",
+    "expected": "id: 123\nvalue: null",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "id",
+          "value": 123
+        },
+        {
+          "name": "value",
+          "value": null
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "encodes empty objects as empty string",
+    "expected": "",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": []
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "quotes string value with colon",
+    "expected": "note: \"a:b\"",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "note",
+          "value": "a:b"
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "quotes string value with comma",
+    "expected": "note: \"a,b\"",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "note",
+          "value": "a,b"
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "quotes string value with newline",
+    "expected": "text: \"line1\\nline2\"",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "text",
+          "value": "line1\nline2"
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "quotes string value with embedded quotes",
+    "expected": "text: \"say \\\"hello\\\"\"",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "text",
+          "value": "say \"hello\""
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "quotes string value with leading space",
+    "expected": "text: \" padded \"",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "text",
+          "value": " padded "
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "quotes string value with only spaces",
+    "expected": "text: \"  \"",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "text",
+          "value": "  "
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "quotes string value that looks like true",
+    "expected": "v: \"true\"",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "v",
+          "value": "true"
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "quotes string value that looks like number",
+    "expected": "v: \"42\"",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "v",
+          "value": "42"
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "quotes string value that looks like negative decimal",
+    "expected": "v: \"-7.5\"",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "v",
+          "value": "-7.5"
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "quotes key with colon",
+    "expected": "\"order:id\": 7",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "order:id",
+          "value": 7
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "quotes key with brackets",
+    "expected": "\"[index]\": 5",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "[index]",
+          "value": 5
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "quotes key with braces",
+    "expected": "\"{key}\": 5",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "{key}",
+          "value": 5
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "quotes key with comma",
+    "expected": "\"a,b\": 1",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "a,b",
+          "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "quotes key with spaces",
+    "expected": "\"full name\": Ada",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "full name",
+          "value": "Ada"
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "quotes key with leading hyphen",
+    "expected": "\"-lead\": 1",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "-lead",
+          "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "quotes key with leading and trailing spaces",
+    "expected": "\" a \": 1",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": " a ",
+          "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "quotes numeric key",
+    "expected": "\"123\": x",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "123",
+          "value": "x"
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "quotes empty string key",
+    "expected": "\"\": 1",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "",
+          "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "quotes non-ASCII key",
+    "expected": "\"café\": 1",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "café",
+          "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "quotes CJK key",
+    "expected": "\"名前\": x",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "名前",
+          "value": "x"
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "escapes newline in key",
+    "expected": "\"line\\nbreak\": 1",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "line\nbreak",
+          "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "escapes tab in key",
+    "expected": "\"tab\\there\": 2",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "tab\there",
+          "value": 2
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "escapes quotes in key",
+    "expected": "\"he said \\\"hi\\\"\": 1",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "he said \"hi\"",
+          "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "escapes U+0004 control character in key via \\uXXXX",
+    "expected": "\"a\\u0004b\": 1",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "a\u0004b",
+          "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "escapes U+001F control character in key via \\uXXXX",
+    "expected": "\"x\\u001fy\": 2",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "x\u001fy",
+          "value": 2
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "encodes deeply nested objects",
+    "expected": "a:\n  b:\n    c: deep",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "a",
+          "value": {
+            "_type": "toon-ordered",
+            "entries": [
+              {
+                "name": "b",
+                "value": {
+                  "_type": "toon-ordered",
+                  "entries": [
+                    {
+                      "name": "c",
+                      "value": "deep"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "encodes empty nested object",
+    "expected": "user:",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "user",
+          "value": {
+            "_type": "toon-ordered",
+            "entries": []
+          }
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "encodes __proto__ own property as an ordinary key",
+    "expected": "__proto__: polluted\nsafe: true",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "__proto__",
+          "value": "polluted"
+        },
+        {
+          "name": "safe",
+          "value": true
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "encodes constructor and prototype own properties as ordinary keys",
+    "expected": "constructor: 1\nprototype: 2",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "constructor",
+          "value": 1
+        },
+        {
+          "name": "prototype",
+          "value": 2
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "encodes __proto__ as a tabular field name",
+    "expected": "rows[2]{__proto__,x}:\n  a,1\n  b,2",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "rows",
+          "value": [
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "__proto__",
+                  "value": "a"
+                },
+                {
+                  "name": "x",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "_type": "toon-ordered",
+              "entries": [
+                {
+                  "name": "__proto__",
+                  "value": "b"
+                },
+                {
+                  "name": "x",
+                  "value": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Object encoding – simple objects, nested objects, key encoding",
+    "name": "quotes hash-leading string in object field value",
+    "expected": "note: \"#x\"",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "note",
+          "value": "#x"
+        }
+      ]
+    }
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "encodes safe strings without quotes",
+    "expected": "hello",
+    "options": {},
+    "input": "hello"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "encodes safe string with underscore and numbers",
+    "expected": "Ada_99",
+    "options": {},
+    "input": "Ada_99"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "quotes empty string",
+    "expected": "\"\"",
+    "options": {},
+    "input": ""
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "quotes string that looks like true",
+    "expected": "\"true\"",
+    "options": {},
+    "input": "true"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "quotes string that looks like false",
+    "expected": "\"false\"",
+    "options": {},
+    "input": "false"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "quotes string that looks like null",
+    "expected": "\"null\"",
+    "options": {},
+    "input": "null"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "quotes string that looks like integer",
+    "expected": "\"42\"",
+    "options": {},
+    "input": "42"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "quotes string that looks like negative decimal",
+    "expected": "\"-3.14\"",
+    "options": {},
+    "input": "-3.14"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "quotes string that looks like scientific notation",
+    "expected": "\"1e-6\"",
+    "options": {},
+    "input": "1e-6"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "quotes string with leading zero",
+    "expected": "\"05\"",
+    "options": {},
+    "input": "05"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "escapes newline in string",
+    "expected": "\"line1\\nline2\"",
+    "options": {},
+    "input": "line1\nline2"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "escapes tab in string",
+    "expected": "\"tab\\there\"",
+    "options": {},
+    "input": "tab\there"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "escapes carriage return in string",
+    "expected": "\"return\\rcarriage\"",
+    "options": {},
+    "input": "return\rcarriage"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "encodes string with U+0004 control character via \\uXXXX",
+    "expected": "val: \"a\\u0004b\"",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "val",
+          "value": "a\u0004b"
+        }
+      ]
+    }
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "escapes backslash in string",
+    "expected": "\"C:\\\\Users\\\\path\"",
+    "options": {},
+    "input": "C:\\Users\\path"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "quotes string with array-like syntax",
+    "expected": "\"[3]: x,y\"",
+    "options": {},
+    "input": "[3]: x,y"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "quotes string starting with hyphen-space",
+    "expected": "\"- item\"",
+    "options": {},
+    "input": "- item"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "quotes single hyphen as object value",
+    "expected": "marker: \"-\"",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "marker",
+          "value": "-"
+        }
+      ]
+    }
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "quotes string starting with hyphen as object value",
+    "expected": "note: \"- item\"",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "note",
+          "value": "- item"
+        }
+      ]
+    }
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "quotes single hyphen in array",
+    "expected": "items[1]: \"-\"",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "items",
+          "value": [
+            "-"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "quotes leading-hyphen string in array",
+    "expected": "tags[3]: a,\"- item\",b",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "tags",
+          "value": [
+            "a",
+            "- item",
+            "b"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "quotes string with bracket notation",
+    "expected": "\"[test]\"",
+    "options": {},
+    "input": "[test]"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "quotes string with brace notation",
+    "expected": "\"{key}\"",
+    "options": {},
+    "input": "{key}"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "encodes Unicode string without quotes",
+    "expected": "café",
+    "options": {},
+    "input": "café"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "encodes Chinese characters without quotes",
+    "expected": "你好",
+    "options": {},
+    "input": "你好"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "encodes emoji without quotes",
+    "expected": "🚀",
+    "options": {},
+    "input": "🚀"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "encodes string with emoji and spaces",
+    "expected": "hello 👋 world",
+    "options": {},
+    "input": "hello 👋 world"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "encodes emoji inside a quoted string",
+    "expected": "\"a,🚀\"",
+    "options": {},
+    "input": "a,🚀"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "encodes positive integer",
+    "expected": "42",
+    "options": {},
+    "input": 42
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "encodes decimal number",
+    "expected": "3.14",
+    "options": {},
+    "input": 3.14
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "encodes negative integer",
+    "expected": "-7",
+    "options": {},
+    "input": -7
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "encodes zero",
+    "expected": "0",
+    "options": {},
+    "input": 0
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "encodes negative zero as zero",
+    "expected": "0",
+    "options": {},
+    "input": -0
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "encodes large integer without exponent notation",
+    "expected": "1000000",
+    "options": {},
+    "input": 1000000
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "encodes small decimal without exponent notation",
+    "expected": "0.000001",
+    "options": {},
+    "input": 0.000001
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "encodes large number",
+    "expected": "100000000000000000000",
+    "options": {},
+    "input": 100000000000000000000
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "encodes MAX_SAFE_INTEGER",
+    "expected": "9007199254740991",
+    "options": {},
+    "input": 9007199254740991
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "encodes repeating decimal with full precision",
+    "expected": "0.3333333333333333",
+    "options": {},
+    "input": 0.3333333333333333
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "encodes true",
+    "expected": "true",
+    "options": {},
+    "input": true
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "encodes false",
+    "expected": "false",
+    "options": {},
+    "input": false
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "encodes null",
+    "expected": "null",
+    "options": {},
+    "input": null
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "quotes leading-plus numeric-like string",
+    "expected": "\"+1\"",
+    "options": {},
+    "input": "+1"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "quotes string equal to hash",
+    "expected": "\"#\"",
+    "options": {},
+    "input": "#"
+  },
+  {
+    "file": "Primitive value encoding – strings, numbers, booleans, null",
+    "name": "quotes string starting with hash",
+    "expected": "\"#hello\"",
+    "options": {},
+    "input": "#hello"
+  },
+  {
+    "file": "Whitespace and formatting invariants – no trailing spaces, no trailing newlines",
+    "name": "produces no trailing newline at end of output",
+    "expected": "id: 123",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "id",
+          "value": 123
+        }
+      ]
+    }
+  },
+  {
+    "file": "Whitespace and formatting invariants – no trailing spaces, no trailing newlines",
+    "name": "maintains proper indentation for nested structures",
+    "expected": "user:\n  id: 123\n  name: Ada\nitems[2]: a,b",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "user",
+          "value": {
+            "_type": "toon-ordered",
+            "entries": [
+              {
+                "name": "id",
+                "value": 123
+              },
+              {
+                "name": "name",
+                "value": "Ada"
+              }
+            ]
+          }
+        },
+        {
+          "name": "items",
+          "value": [
+            "a",
+            "b"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "file": "Whitespace and formatting invariants – no trailing spaces, no trailing newlines",
+    "name": "respects custom indentSize option",
+    "expected": "user:\n    name: Ada\n    role: admin",
+    "options": {
+      "indentSize": 4
+    },
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "user",
+          "value": {
+            "_type": "toon-ordered",
+            "entries": [
+              {
+                "name": "name",
+                "value": "Ada"
+              },
+              {
+                "name": "role",
+                "value": "admin"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "file": "Whitespace and formatting invariants – no trailing spaces, no trailing newlines",
+    "name": "leaves non-ASCII whitespace unquoted",
+    "expected": "k:  x ",
+    "options": {},
+    "input": {
+      "_type": "toon-ordered",
+      "entries": [
+        {
+          "name": "k",
+          "value": " x "
+        }
+      ]
+    }
+  }
+]
