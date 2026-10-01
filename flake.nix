@@ -37,6 +37,8 @@
         };
       });
 
-      formatter = forAllSystems (pkgs: pkgs.nixpkgs-fmt);
+      formatter = forAllSystems (pkgs: pkgs.writeShellScriptBin "nixpkgs-fmt" ''
+        exec ${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt "''${@:-.}"
+      '');
     };
 }
